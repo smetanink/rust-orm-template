@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+    
